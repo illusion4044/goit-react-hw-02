@@ -1,9 +1,6 @@
 import React from 'react';
 
-export default function Feedback({ feedback }) {
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positiveFeedbackPercentage = totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0;
-
+export default function Feedback({ feedback, totalFeedback, positiveFeedbackPercentage }) {
   return (
     <div>
       <h2>Feedback Statistics</h2>
