@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Feedback = ({ feedback }) => {
+export default function Feedback({ feedback }) {
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positiveFeedbackPercentage = Math.round((feedback.good / totalFeedback) * 100);
+  const positiveFeedbackPercentage = totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0;
 
   return (
     <div>
@@ -14,6 +14,4 @@ const Feedback = ({ feedback }) => {
       <p>Positive feedback: {positiveFeedbackPercentage}%</p>
     </div>
   );
-};
-
-export default Feedback;
+}

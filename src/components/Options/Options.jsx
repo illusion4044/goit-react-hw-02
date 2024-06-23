@@ -1,31 +1,12 @@
 import React from 'react';
 
-const Options = ({ feedback, setFeedback }) => {
-  const updateFeedback = (feedbackType) => {
-    setFeedback((prevFeedback) => ({
-      ...prevFeedback,
-      [feedbackType]: prevFeedback[feedbackType] + 1,
-    }));
-  };
-
-  const resetFeedback = () => {
-    setFeedback({
-      good: 0,
-      neutral: 0,
-      bad: 0,
-    });
-  };
-
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-
+export default function Options({ feedback, setFeedback, resetFeedback }) {
   return (
     <div>
-      <button onClick={() => updateFeedback('good')}>Good</button>
-      <button onClick={() => updateFeedback('neutral')}>Neutral</button>
-      <button onClick={() => updateFeedback('bad')}>Bad</button>
-      {totalFeedback > 0 && <button onClick={resetFeedback}>Reset</button>}
+      <button onClick={() => setFeedback((prevFeedback) => ({ ...prevFeedback, good: prevFeedback.good + 1 }))}>Good</button>
+      <button onClick={() => setFeedback((prevFeedback) => ({ ...prevFeedback, neutral: prevFeedback.neutral + 1 }))}>Neutral</button>
+      <button onClick={() => setFeedback((prevFeedback) => ({ ...prevFeedback, bad: prevFeedback.bad + 1 }))}>Bad</button>
+      {feedback.good + feedback.neutral + feedback.bad > 0 && <button onClick={resetFeedback}>Reset</button>}
     </div>
   );
-};
-
-export default Options;
+}
